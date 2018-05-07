@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/doT.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="part">
+			<script id="parttmpl" type="text/x-dot-template">
+				{{##def.snippet:
+ 				{{#def.joke}}
+ 				#}}
+ 				{{##def.snippet2:
+ 				<div>123</div>
+ 				#}}
+ 				{{#def.snippet}}
+				{{#def.snippet2}}
+			</script>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var dataPart = {
+				"name": "Jake",
+				"age": 31,
+				"html": "<div style='background: #f00; height: 30px; line-height: 30px;'>html元素</div>"
+			};
+			var defPart = {
+				"joke": "<div>{{=it.name}} who?</div>"
+			};
+			var partText = doT.template($("#parttmpl").text(), undefined, defPart);
+			$("#part").html(partText(dataPart));
+		</script>
+	</body>
+
+</html>
